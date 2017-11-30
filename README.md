@@ -4,39 +4,42 @@
 
 ### Function Code
 
-- Code entry type: `Upload a .ZIP file`
+- Clone repository
+- zip file repository from terminal: zip -r ../index.zip *
+- Create Function in Lambda console, using the following settings:
+- Upload .Zip file in Lambda console: Code entry type
 - Runtime: `Node.js 6.10`
 - Handler: `index.handler`
+- Timeout: 10 sec
+- Configure test event: with event structure given bellow
 
 ### Basic Settings
 
-Set the memory to `1536 MB`(XD). Also remember to increase the timeout to `5 min`.
+Set the memory to `1536 MB`(XD) AND increase the timeout to `10 sec`.
 
 ### Execution Role
 
 To use S3, you will need to create a execution role with the correct permission.
 
 ### Triggers and Data
+The trigger event will be a JSON object.The first index of s3Files key should only be for the pdf that will used for overlaying. The other s3Files, in this case, are files that will be used as "image" type definitions.
 
-Test event sample:
+Event structure:
 {
-  "s3Files": {
-    "pdf": {
+  "s3Files": [
+    {
       "bucketName": "democracy-live",
-      "bucketKey": "test.pdf",
-      "bucketArn": "arn:aws:s3:::democracy-live"
+      "bucketKey": "test.pdf"
     },
-    "definitions": [
-      {
-        "bucketName": "democracy-live",
-        "bucketKey": "mark.jpg"
-      },
-      {
-        "bucketName": "democracy-live",
-        "bucketKey": "test2.pdf"
-      }
-    ]
-  },
+    {
+      "bucketName": "democracy-live",
+      "bucketKey": "mark.jpg"
+    },
+    {
+      "bucketName": "democracy-live",
+      "bucketKey": "image.png"
+    }
+  ],
   "definitions": [
     {
       "value": "1230 NW 12th ave",
@@ -60,11 +63,11 @@ Test event sample:
       "value": "mark.jpg",
       "type": "image",
       "x": 200,
-      "y": 400
+      "y": 50
     },
     {
-      "value": "test2.pdf",
-      "type": "pdf",
+      "value": "image.png",
+      "type": "image",
       "x": 200,
       "y": 300
     }
