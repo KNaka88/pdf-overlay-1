@@ -28,8 +28,10 @@ To use S3, you will need to create a execution role with the correct permission.
 The trigger event will be a JSON object. Is important to notice that the first index of s3Files key should only be for the original pdf that will used for overlaying. The other s3Files, in this case, are files that will be used as "image" type definitions later.
 
 Event structure:
-{
+
+ {
   "s3Files": [
+
     {
       "bucketName": "democracy-live",
       "bucketKey": "test.pdf"
@@ -42,37 +44,38 @@ Event structure:
       "bucketName": "democracy-live",
       "bucketKey": "image.png"
     }
-  ],
-  "definitions": [
-    {
-      "value": "1230 NW 12th ave",
-      "type": "text",
-      "x": 10,
-      "y": 20
-    },
-    {
-      "value": "Portland,OR 97209",
-      "type": "text",
-      "x": 10,
-      "y": 35
-    },
-    {
-      "value": "001",
-      "type": "barcode",
-      "x": 550,
-      "y": 20
-    },
-    {
-      "value": "mark.jpg",
-      "type": "image",
-      "x": 200,
-      "y": 50
-    },
-    {
-      "value": "image.png",
-      "type": "image",
-      "x": 200,
-      "y": 300
-    }
-  ]
+    ],
+    "definitions": [
+
+      {
+        "value": "1230 NW 12th ave",
+        "type": "text",
+        "x": 10,
+        "y": 20
+      },
+      {
+        "value": "Portland,OR 97209",
+        "type": "text",
+        "x": 10,
+        "y": 35
+      },
+      {
+        "value": "001",
+        "type": "barcode",
+        "x": 550,
+        "y": 20
+      },
+      {
+        "value": "mark.jpg",
+        "type": "image",
+        "x": 200,
+        "y": 50
+      },
+      {
+        "value": "image.png",
+        "type": "image",
+        "x": 200,
+        "y": 300
+      }
+    ]
 }
