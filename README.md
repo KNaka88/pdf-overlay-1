@@ -1,5 +1,8 @@
 # PDF-Overlay
 
+## Description
+The program takes a pdf input file (from S3) and overlays it with contents (and its coordinates) like "image" and "text". The new pdf output is saved in the same s3 bucket from where the original pdf came from.
+
 ## Lambda Settings
 
 ### Function Code
@@ -22,7 +25,7 @@ Set the memory to `1536 MB`(XD) AND increase the timeout to `10 sec`.
 To use S3, you will need to create a execution role with the correct permission.
 
 ### Triggers and Data
-The trigger event will be a JSON object.The first index of s3Files key should only be for the pdf that will used for overlaying. The other s3Files, in this case, are files that will be used as "image" type definitions.
+The trigger event will be a JSON object. Is important to notice that the first index of s3Files key should only be for the original pdf that will used for overlaying. The other s3Files, in this case, are files that will be used as "image" type definitions later.
 
 Event structure:
 {
