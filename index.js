@@ -64,7 +64,7 @@ exports.handler=(event,context,callback)=>{
         } else if (definitions[i].type==='pdf') {
           console.log(`/tmp/${definitions[i].value}`);
           pdfDoc
-              .overlay(`/tmp/${definitions[i].value}`);
+              .overlay(`/tmp/${definitions[i].value}`,definitions[i].x,definitions[i].y);
         }else if (definitions[i].type==='image') {
           console.log(`/tmp/${definitions[i].value}`);
           pdfDoc

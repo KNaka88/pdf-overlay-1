@@ -1,11 +1,18 @@
 # PDF-Overlay
 
 ## Description
-The program takes a pdf input file (from S3) and overlays it with contents (and its coordinates) like "image" and "text". The new pdf output is saved in the same s3 bucket from where the original pdf came from.
+The program takes a pdf input file (from S3) and overlays it with contents (and its coordinates) of type "image", "pdf" (these two types would have to be stored in an S3 bucket) and "text" that come from an JSON object event. The new pdf output is saved in the same s3 bucket from where the original pdf came from.
 
-## Lambda Settings
+## Lambda Settings by running bash script
 
-### Function Code
+- Clone this repository
+- in file `deploy.sh` make sure to change value of variable ROLE to your correct arn role.
+- in file `input.txt` adjust keys, bucket names and definitions to the real ones you will use. Notice that the first index of key "s3Files" is reserved for original PDF that will be overlay.
+- In terminal cd into the folder and enter:
+- $chmod +x deploy.sh
+- $./deploy.sh
+
+## Lambda Settings Manually
 
 - Clone repository
 - zip file repository from terminal: zip -r ../index.zip *
