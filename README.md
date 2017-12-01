@@ -7,8 +7,7 @@ The program takes a pdf input file (from S3) and overlays it with contents (and 
 
 - Clone this repository
 - in file `deploy.sh` make sure to change value of variable ROLE to your correct arn role.
-- in file `input.txt` adjust keys, bucket names and definitions to the real ones you will use. Notice that the first index of key "s3Files" is reserved for original PDF that will be overlay.
-* Warning do not edit `input.txt` outside of a code editor. 
+- in file `input.txt` adjust keys, bucket names and definitions to the real ones you will use. Notice that the first index of key "s3Files" is reserved for original PDF that will be overlay. Warning: do not edit `input.txt` outside of a code editor. 
 - In terminal cd into the folder and enter:
 - $chmod +x deploy.sh
 - $./deploy.sh
